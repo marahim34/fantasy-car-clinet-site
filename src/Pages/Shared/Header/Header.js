@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
+        {user?.uid ?
+            <>
+                <li tabIndex={0}>
+                    {user?.photoURL ?
+                        <span className='avatar w-1/2'>
+                            <img src={user?.photoURL} alt='' className=' w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'></img>
+                        </span> :
+                        <span className='avatar w-1/2'>
+                            <img src="https://i.ibb.co/rH3mSXF/blank-avatar.jpg" alt='' className=' w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'></img>
+                        </span>
+                    }
+                    <ul className="p-2">
+                        <li><Link>{user?.displayName}</Link></li>
+                        <button className='btn btn-outline btn-primary' onClick={handleLogOut}>Log Out</button>
+                    </ul>
+                </li>
+            </>
+            :
+            <li><Link to='/login'>Login</Link></li>
+        }
+
         <li><Link to='/blog'>Blog</Link></li>
+
     </>
     return (
         <div className="navbar">
@@ -18,7 +49,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className='fle'>
-                    <a className="btn btn-ghost normal-case text-xl">Fantasy Car</a>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl">Fantasy Car</Link>
                     <p className='hidden md:block pl-4'>Your dream is just a click away!</p>
                 </div>
             </div>
@@ -28,7 +59,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Get started</a>
+                <Link to='/register' className="btn">Register Now!</Link>
             </div>
         </div>
     );

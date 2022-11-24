@@ -5,9 +5,7 @@ import WhyFantasy from '../WhyFantasy/WhyFantasy';
 const Home = () => {
     return (
         <div>
-            This is the HoME PaGE
             <CarouselBanner></CarouselBanner>
-
             <WhyFantasy></WhyFantasy>
         </div>
     );
