@@ -1,0 +1,218 @@
+[
+  {
+    "category_id": "01",
+    "data": {
+      "country": "CANADA",
+      "model": "2019 Toyota Corolla Hatchback ; Power. 168 hp @ 6600 rpm",
+      "manufacturingDate": "2018-12-26",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "TOYOTA MOTOR CO., LTD",
+      "yearsUsed": "3",
+      "vehicleType": "Hatch Back",
+      "picture": "https://i.ibb.co/GCWJ4jx/Toyota-Corolla-Hatchback-Hybrid-2019-Jussi-01.jpg",
+      "seller": "Elon Mask",
+      "condition": "Excellent",
+      "sellPrice": "40000",
+      "description": "With sporty styling, intuitive tech and responsive handling, 2019 Corolla Hatchback is ready to hit the road running.",
+      "purchasePrice": "65000"
+    }
+  },
+  {
+    "category_id": "01",
+    "data": {
+      "country": "UNITED STATES (USA)",
+      "model": "2019 Honda Civic Hatchback Trim Levels ; LX Edition",
+      "manufacturingDate": "2018-12-26",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+      "yearsUsed": "3",
+      "vehicleType": "Hatch Back",
+      "picture": "http://placehold.it/32x32",
+      "seller": "Bernard Arnault",
+      "condition": "Excellent",
+      "sellPrice": "25000",
+      "description": "Honda Civic 2019 is a base 2.0-liter four-cylinder with 158 horsepower and 138 lb-ft of torque, while models further up the hierarchy get turbo power from a 1.5-liter four-banger with 180 hp and 177 lb-ft.",
+      "purchasePrice": "60000"
+    }
+  },
+  {
+    "category_id": "02",
+    "data": {
+      "country": "UNITED STATES (USA)",
+      "model": "Toyota Sedan 4D SE I4 Hybrid",
+      "manufacturingDate": "2018-12-26",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "TOYOTA MOTOR CO., LTD",
+      "yearsUsed": "3",
+      "vehicleType": "Sedan",
+      "picture": "https://i.ibb.co/xDkdNd9/Toyota-Corolla-sedan-AK-7276.jpg",
+      "seller": "Gautam Adani",
+      "condition": "Excellent",
+      "sellPrice": "30000",
+      "description": "2019 Toyota Corolla Sedan Hybrid, the twelfth generation sedan with a hybrid powertrain. The model looks solid and prestigious",
+      "purchasePrice": "63000"
+    }
+  },
+  {
+    "category_id": "02",
+    "data": {
+      "country": "CANADA",
+      "model": "RENAULT Megane Sedan",
+      "manufacturingDate": "2018-12-26",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "Renault Motors MFG., INC.",
+      "yearsUsed": "3",
+      "vehicleType": "Sedan",
+      "picture": "https://i.ibb.co/7VnpQDH/Renault-Megane-Sedan-2017-800-05.jpg",
+      "seller": "Jeff Bezos",
+      "condition": "Excellent",
+      "sellPrice": "36000",
+      "description": "The 2019 Renault Megane R.S. Trophy INTENS is a front-wheel drive four-door sedan that was released to the Australian market on 01/07/2017 classified as a XFB-LFF.",
+      "purchasePrice": "69000"
+    }
+  },
+  {
+    "category_id": "03",
+    "data": {
+      "country": "UNITED KINGDOM (UK)",
+      "model": "Honda CR-V 2019",
+      "manufacturingDate": "2018-12-26",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "HONDA OF THE U.K. MFG., LTD.",
+      "yearsUsed": "3",
+      "vehicleType": "Station Wagon",
+      "picture": "https://i.ibb.co/KrV7Xp2/Honda-Accord-Station-Wagon.jpg",
+      "seller": "Bill Gates",
+      "condition": "Excellent",
+      "sellPrice": "25000",
+      "description": "The car is comfortable to drive. Gas mileage is great, handles good, and don't have any complaints with the CVT transmission.",
+      "purchasePrice": "55000"
+    }
+  },
+  {
+    "category_id": "03",
+    "data": {
+      "country": "Germany",
+      "model": "Opel Astra Sports Tourer 2019",
+      "manufacturingDate": "2018-12-26",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "Opel Automobile GmbH",
+      "yearsUsed": "3",
+      "vehicleType": "Station Wagon",
+      "picture": "https://i.ibb.co/C0XHWkg/opel-astra-Station-Wagon.jpg",
+      "seller": "Warren Buffet",
+      "condition": "Excellent",
+      "sellPrice": "45000",
+      "description": "With a fuel consumption of 4.6 litres/100km - 61 mpg UK - 51 mpg US (Average), 0 to 100 km/h (62mph) in 10.1 seconds, a maximum top speed of 124 mph (200 km/h), a curb weight of 3142 lbs (1425 kgs), the Astra K Sports Tourer 1.6 CDTI 136HP Auto Excellence has a turbocharged Inline 4 cylinder engine, Diesel motor.",
+      "purchasePrice": "75000"
+    }
+  },
+  {
+    "category_id": "04",
+    "data": {
+      "country": "UNITED STATES (USA)",
+      "model": "Honda HR-V 2019",
+      "manufacturingDate": "2018-12-26",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "AMERICAN HONDA MOTOR CO., INC.",
+      "yearsUsed": "3",
+      "vehicleType": "SUV",
+      "picture": "https://i.ibb.co/HXMZcDH/Honda-SUV.jpg",
+      "seller": "Larry Page",
+      "condition": "Excellent",
+      "sellPrice": "55000",
+      "description": "Fuel-efficient powertrain, cargo-hauling leader, handsome styling. Lackluster acceleration, unremarkable interior styling, short on small-item storage. Completely sufficient, wholly average and inoffensive, the HR-V is a mini crossover for the masses.",
+      "purchasePrice": "85000"
+    }
+  },
+  {
+    "category_id": "04",
+    "data": {
+      "country": "UNITED STATES (USA)",
+      "model": " Mitsubishi Outlander EV 2019",
+      "manufacturingDate": "2019-03-27",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "MITSUBISHI MOTORS CORPORATION",
+      "yearsUsed": "3",
+      "vehicleType": "SUV",
+      "picture": "https://i.ibb.co/svm5nTf/mitsubishi-outlander-SUV.jpg",
+      "seller": "Mukesh Ambani",
+      "condition": "Excellent",
+      "sellPrice": "30000",
+      "description": "The 2019 Mitsubishi Outlander is one of the least expensive SUVs you can buy with a third-row seat. It also comes with an appealing set of features and offers an optional V6 engine. So far, so good, right? But if you research this Mitsubishi more closely you'll realize that it comes up a bit short.",
+      "purchasePrice": "80000"
+    }
+  },
+  {
+    "category_id": "05",
+    "data": {
+      "country": "UNITED STATES (USA)",
+      "model": "BMW 430i 2dr Convertible",
+      "manufacturingDate": "2019-03-27",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "BAYERISCHE MOTOREN WERKE (BMW) GMBH",
+      "yearsUsed": "3",
+      "vehicleType": "Convertible",
+      "picture": "https://i.ibb.co/JF68Z4P/BMW-convertible.jpg",
+      "seller": "Michael Bloomberg",
+      "condition": "Excellent",
+      "sellPrice": "19000",
+      "description": "The 2019 BMW 4 Series is available as a coupe or convertible in two trims — 430i or 440i — that differ mostly by engine type. The 430i is powered by a turbocharged 2.0-liter four-cylinder engine (248 horsepower and 258 pound-feet of torque), while the 440i uses a turbocharged 3.0-liter six-cylinder engine (326 hp and 332 lb-ft). All 4 Series models come with an eight-speed automatic transmission and rear-wheel drive, though a six-speed manual is optional with the coupe.",
+      "purchasePrice": "50000"
+    }
+  },
+  {
+    "category_id": "05",
+    "data": {
+      "country": "UNITED STATES (USA)",
+      "model": "Mercedes Benz E 450 2dr Convertible",
+      "manufacturingDate": "2019-03-27",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "MERCEDES-BENZ GROUP AG",
+      "yearsUsed": "3",
+      "vehicleType": "Convertible",
+      "picture": "https://i.ibb.co/MkRfvCy/original.webp",
+      "seller": "Mark Zuckerberg",
+      "condition": "Excellent",
+      "sellPrice": "25000",
+      "description": "The E450 is an all-wheel drive 2 door with 4 seats, powered by a 3.0L TWIN TURBO V6 engine that has 270 kW of power (at 5500 rpm) and 500 Nm of torque (at 1800 rpm) via a Nine-speed Automatic G-Tronic.",
+      "purchasePrice": "65000"
+    }
+  },
+  {
+    "category_id": "06",
+    "data": {
+      "country": "CANADA",
+      "model": "Nissan Frontier 2019",
+      "manufacturingDate": "2019-03-27",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "NISAAN MOTORS CO. LTD.",
+      "yearsUsed": "3",
+      "vehicleType": "Pick Up",
+      "picture": "https://i.ibb.co/vdM4RY5/Nissan-Pickup.jpg",
+      "seller": "Larry Ellison",
+      "condition": "Excellent",
+      "sellPrice": "40000",
+      "description": "The 2019 Nissan Frontier is a midsize truck offered in two body styles (extended cab or four-door crew cab) and with 5-foot and 6.1-foot bed lengths. Two engines are available: a 2.5-liter four-cylinder (152 horsepower, 171 pound-feet of torque) or a 4.0-liter six-cylinder (261-hp, 281 lb-ft).",
+      "purchasePrice": "105000"
+    }
+  },
+  {
+    "category_id": "06",
+    "data": {
+      "country": "UNITED STATES (USA)",
+      "model": "Mitsubishi L200 2019",
+      "manufacturingDate": "2019-04-21",
+      "registrationDate": "2019-01-01",
+      "manufacturer": "MITSUBISHI MOTORS CORPORATION",
+      "yearsUsed": "3",
+      "vehicleType": "Pick Up",
+      "picture": "https://i.ibb.co/pL5JWwK/Mitsubishi-Pickup.jpg",
+      "seller": "Carlos Slim Helu",
+      "condition": "Excellent",
+      "sellPrice": "35000",
+      "description": "The L200 offers sporty, body-hugging front seats, sculpted for maximum comfort with wide shoulder support and a deeper centre. The L200 double cab provides room for three extra passengers just like a car.",
+      "purchasePrice": "165000"
+    }
+  }
+]

@@ -3,37 +3,30 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, setLoading } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                // setLoading(true);
+                localStorage.removeItem('fantasyCar-token')
+                setLoading(false)
+            })
             .catch(error => console.error(error))
     }
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
+        <li><Link to='/cars'>Marketplace</Link></li>
         {user?.uid ?
             <>
-                <li tabIndex={0}>
-                    {user?.photoURL ?
-                        <span className='avatar w-1/2'>
-                            <img src={user?.photoURL} alt='' className=' w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'></img>
-                        </span> :
-                        <span className='avatar w-1/2'>
-                            <img src="https://i.ibb.co/rH3mSXF/blank-avatar.jpg" alt='' className=' w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'></img>
-                        </span>
-                    }
-                    <ul className="p-2">
-                        <li><Link>{user?.displayName}</Link></li>
-                        <button className='btn btn-outline btn-primary' onClick={handleLogOut}>Log Out</button>
-                    </ul>
+                <li><Link>{user?.uid ? user?.displayName : <img src={user?.photoURL} alt="" />}</Link></li>
+                <li>   <button className='btn btn-outline btn-primary' onClick={handleLogOut}>Log Out</button>
                 </li>
             </>
             :
             <li><Link to='/login'>Login</Link></li>
         }
-
         <li><Link to='/blog'>Blog</Link></li>
 
     </>
@@ -48,13 +41,13 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <div className='fle'>
+                <div>
                     <Link to='/' className="btn btn-ghost normal-case text-xl">Fantasy Car</Link>
                     <p className='hidden md:block pl-4'>Your dream is just a click away!</p>
                 </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-10">
+            <div className="navbar-end hidden lg:flex">
+                <ul className="menu menu-horizontal">
                     {menuItems}
                 </ul>
             </div>

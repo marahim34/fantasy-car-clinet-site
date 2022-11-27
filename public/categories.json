@@ -1,0 +1,26 @@
+[
+  {
+    "id": "01",
+    "name": "Hatch Back"
+  },
+  {
+    "id": "02",
+    "name": "Sedan"
+  },
+  {
+    "id": "03",
+    "name": "Station Wagon"
+  },
+  {
+    "id": "04",
+    "name": "SUV"
+  },
+  {
+    "id": "05",
+    "name": "Convertible"
+  },
+  {
+    "id": "06",
+    "name": "Pick Up"
+  }
+]

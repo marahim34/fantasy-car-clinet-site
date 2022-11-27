@@ -2,7 +2,8 @@ import React, { useContext, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { setAuthToken } from '../../../api/Auth';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Registration = () => {
@@ -14,23 +15,26 @@ const Registration = () => {
     const navigate = useNavigate();
     const password = useRef({});
     password.current = watch("password", "");
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleRegister = (data) => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                // console.log(user);
+
+                console.log(user);
                 setSignUpError('');
                 toast.success('Account created successfully')
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                    .then(() => {
-                        saveUser(data.name, data.email)
+                    .then(result => {
+                        // setAuthToken(result.user);
                     })
                     .catch(error => console.error(error))
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
@@ -38,9 +42,6 @@ const Registration = () => {
             })
     }
 
-    const saveUser = (name, email) => {
-        const user = { name, email }
-    }
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -96,7 +97,7 @@ const Registration = () => {
                         <>{signUpError && <p className='text-red-500 text-sm'>{signUpError}</p>}</>
                     </form>
                     <p className="text-sm font-semibold mt-2 pt-1 mb-0">
-                        Already have an account? <Link to='/login' className="text-green-600 hover:text-green-700 focus:text-green-600 transition duration-200 ease-in-out">Login Now!</Link>
+                        Already have an account? <Link to='/login' className="text-green-600 hover:text-green-700 focus:text-green-600 transition duration-200 ease-in-out">Register Now!</Link>
                     </p>
 
                     <div
