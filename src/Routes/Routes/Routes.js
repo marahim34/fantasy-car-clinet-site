@@ -2,7 +2,9 @@ import DashBoardLayout from "../../Layout/DashBoardLayout";
 import AddCar from "../../Pages/DashBoard/AddCar/AddCar";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import Cars from "../../Pages/General/Cars/Cars";
+import CategorywiseItems from "../../Pages/General/CategorywiseItems/CategorywiseItems";
 import Home from "../../Pages/General/Home/Home";
+import SingleCar from "../../Pages/General/SingleCar/SingleCar";
 import Login from "../../Pages/Login/Login/Login";
 import Registration from "../../Pages/Login/Registration/Registration";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
@@ -22,6 +24,18 @@ export const router = createBrowserRouter([
             {
                 path: '/cars',
                 element: <Cars></Cars>
+            },
+            {
+                path: '/car/:id',
+                element: <SingleCar></SingleCar>
+            },
+            {
+                path: '/category/:id',
+                element: <CategorywiseItems></CategorywiseItems>,
+                loader: async ({ params }) => {
+                    // console.log(params.id)
+                    return fetch(`http://localhost:5000/category/${params.id}`)
+                }
             },
             {
                 path: '/login',
