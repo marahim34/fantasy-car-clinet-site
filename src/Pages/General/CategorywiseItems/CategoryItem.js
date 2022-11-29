@@ -14,14 +14,14 @@ const CategoryItem = ({ categoryItem }) => {
                 </PhotoProvider>
                 <div className="card-body bg-yellow-500">
                     <h2 className="card-title h-12 items-start">{model}</h2>
-                    <p className='h-16'>{ }... <Link to='/service/:id' className="link link-primary">Read More</Link> </p>
+                    <p className='h-16'>{vehicleType}</p>
                     <div className='flex justify-between'>
                         <div>
                             <p>Price: <small>€</small> <strong>{sellPrice}</strong> <small></small> </p>
                         </div>
                         <div className='rating items-center'>
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                            <p>{ }</p>
+                            <p>Location: {country}</p>
                         </div>
                     </div>
                     <div className="card-actions justify-end">

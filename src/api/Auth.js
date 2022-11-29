@@ -1,6 +1,7 @@
 // export const setAuthToken = user => {
-//     const currentUser = {
-//         email: user.email
+
+//     const signedUser = {
+//         email: user?.email
 //     }
 
 //         .fetch(`http://localhost:5000/users/${user?.email}`, {
@@ -8,7 +9,7 @@
 //             headers: {
 //                 'content-type': 'application/json'
 //             },
-//             body: JSON.stringify(currentUser)
+//             body: JSON.stringify(signedUser)
 //         })
 //         .then(res => res.json())
 //         .then(data => {

@@ -21,8 +21,7 @@ const Header = () => {
         {user?.uid ?
             <>
                 <li><Link>{user?.uid ? user?.displayName : <img src={user?.photoURL} alt="" />}</Link></li>
-                <li>   <button className='btn btn-outline btn-primary' onClick={handleLogOut}>Log Out</button>
-                </li>
+                <li>   <button className='btn btn-outline btn-primary' onClick={handleLogOut}>Log Out</button></li>
             </>
             :
             <li><Link to='/login'>Login</Link></li>

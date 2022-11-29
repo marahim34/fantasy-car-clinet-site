@@ -27,7 +27,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/car/:id',
-                element: <SingleCar></SingleCar>
+                element: <SingleCar></SingleCar>,
+                loader: ({ params }) => fetch(`http://localhost:5000/car/${params.id}`)
             },
             {
                 path: '/category/:id',

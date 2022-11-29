@@ -10,7 +10,7 @@ const Registration = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const { handleSubmit, register, watch, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
-    const [userEmail, setUserEmail] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
 
     const navigate = useNavigate();
     const password = useRef({});
@@ -19,19 +19,19 @@ const Registration = () => {
     const from = location.state?.from?.pathname || '/';
 
     const handleRegister = (data) => {
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.role)
             .then(result => {
                 const user = result.user;
-
-                console.log(user);
                 setSignUpError('');
-                toast.success('Account created successfully')
+                toast.success('Account created successfully');
+
                 const userInfo = {
                     displayName: data.name
-                }
+                };
+
                 updateUser(userInfo)
-                    .then(result => {
-                        // setAuthToken(result.user);
+                    .then(() => {
+                        saveUser(data.name, data.email, data.role)
                     })
                     .catch(error => console.error(error))
                 navigate(from, { replace: true })
@@ -43,6 +43,35 @@ const Registration = () => {
     }
 
 
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
+        console.log(user);
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log('saveuser', data);
+                getUserToken(email)
+                setCreatedUserEmail(email);
+            })
+    }
+
+    const getUserToken = email => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken)
+                    navigate('/')
+                }
+            })
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
@@ -50,7 +79,7 @@ const Registration = () => {
                     <img src="https://i.ibb.co/fHqZmSt/Login-graphic-svg.png" className="w-full" alt="" />
                 </div>
                 <div>
-                    <h1 className='text-3xl font-semibold text-center'>Login Now!</h1>
+                    <h1 className='text-3xl font-semibold text-center'>Register Now!</h1>
                     <form onSubmit={handleSubmit(handleRegister)} className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
                         <div className="card-body">
                             <div className="form-control">
@@ -89,6 +118,15 @@ const Registration = () => {
                                         value === password.current || "The passwords do not match"
                                 })} type="password" placeholder="password" className="input input-bordered" required />
                                 {errors.confirm && <p className='text-red-600 text-sm'>{errors.confirm.message} </p>}
+                            </div>
+                            <div className="form-control">
+                                <div className="input-group flex">
+                                    <p>How do you want to use our website?</p>
+                                    <select {...register('role')} name="role">
+                                        <option value="User">User</option>
+                                        <option value="Seller">Seller</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div className="form-control mt-6">

@@ -4,7 +4,6 @@ import { FcGoogle } from 'react-icons/fc';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import toast from 'react-hot-toast';
-import { setAuthToken } from '../../../api/Auth';
 
 const Login = () => {
     const { logIn, googleLogIn, setLoading } = useContext(AuthContext);
@@ -17,9 +16,12 @@ const Login = () => {
     const handleLogIn = data => {
         logIn(data.email, data.password)
             .then(result => {
-                // console.log(user);
+                console.log(result.user);
+                setLoading(true)
                 toast.success('Login Successful!');
+
                 // setAuthToken(result.user);
+
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -32,8 +34,8 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogIn()
             .then(result => {
-                const user = result.user;
-                // setAuthToken(user);
+                // const user = result.user;
+                // setAuthToken(result.user);
                 navigate(from, { replace: true })
             })
     }
