@@ -11,14 +11,14 @@ const AddCar = () => {
     console.log(imageHostingKey);
 
     const navigate = useNavigate();
-    // const { data: cars, isLoading } = useQuery({
-    //     queryKey: ['cars'],
-    //     queryFn: async () => {
-    //         const res = await fetch('http://localhost:5000/appointmentSpecialty')
-    //         const data = await res.json();
-    //         return data;
-    //     }
-    // })
+    const { data: categories, isLoading } = useQuery({
+        queryKey: ['categories'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/categories')
+            const data = await res.json();
+            return data;
+        }
+    })
 
     const handleAddCar = data => {
         // console.log(data);
@@ -60,9 +60,9 @@ const AddCar = () => {
             })
     }
 
-    // if (isLoading) {
-    //     return ('Loading')
-    // }
+    if (isLoading) {
+        return ('Loading')
+    }
 
     return (
         <div className='w-96 p-7'>
@@ -95,18 +95,18 @@ const AddCar = () => {
                         ...register("seller")
                         }
                         className="select input-bordered w-full max-w-xs">
-                        {/* {
-                            cars.map(specialty => <option
-                                key={specialty._id}
-                                value={specialty.name}
-                            >{specialty.name}</option>)
-                        } */}
+                        {
+                            categories.map(category => <option
+                                key={category._id}
+                                value={category.name}
+                            >{category.name}</option>)
+                        }
 
                     </select>
                 </div>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Photo: You can upload multiple files here</span></label>
-                    <input type="file" multiple
+                    <label className="label"> <span className="label-text">Photo: Please upload image of your car</span></label>
+                    <input type="file"
                         {
                         ...register('image', {
                             required: "Please insert  photos"

@@ -124,8 +124,8 @@ const Registration = () => {
                                 <div className="input-group flex">
                                     <p>How do you want to use our website?</p>
                                     <select {...register('role')} name="role">
-                                        <option value="User">User</option>
-                                        <option value="Seller">Seller</option>
+                                        <option value="buyer">Buyer</option>
+                                        <option value="seller">Seller</option>
                                     </select>
                                 </div>
                             </div>

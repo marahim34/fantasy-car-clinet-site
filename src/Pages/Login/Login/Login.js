@@ -13,9 +13,11 @@ const Login = () => {
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
-    const [loggedinUser, setLoggedinUser] = useState('');
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = useToken(loginUserEmail);
+
     const from = location.state?.from?.pathname || '/';
-    const [token] = useToken(loggedinUser)
+
 
     if (token) {
         navigate(from, { replace: true });
@@ -23,14 +25,14 @@ const Login = () => {
 
     const handleLogin = data => {
         console.log(data);
-        setLoginError('');
+        setLoginError('')
+
         logIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                // // console.log(user);
-                // setLoggedinUser(data.email);
-                setAuthToken(user);
-
+                console.log(user);
+                setLoginUserEmail(data.email);
+                toast.success('Login Successfully')
             })
             .catch(error => {
                 console.log(error.message)

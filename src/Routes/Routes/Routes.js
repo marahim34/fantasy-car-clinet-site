@@ -1,5 +1,6 @@
 import DashBoardLayout from "../../Layout/DashBoardLayout";
 import AddCar from "../../Pages/DashBoard/AddCar/AddCar";
+import AllBookings from "../../Pages/DashBoard/AllBookings/AllBookings";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import MyBooking from "../../Pages/DashBoard/MyBooking/MyBooking";
 import Users from "../../Pages/DashBoard/Users/Users";
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/add-car',
                 element: <AddCar></AddCar>
+            },
+            {
+                path: '/dashboard/bookings',
+                element: <AllBookings></AllBookings>
             },
             {
                 path: '/dashboard/users',
