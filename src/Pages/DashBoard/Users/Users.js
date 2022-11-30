@@ -7,7 +7,7 @@ const Users = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('https://fantasy-car-server.vercel.app/users');
+            const res = await fetch('https://fantasy-car-server-marahim34.vercel.app/users');
             const data = await res.json();
             return data
         }
@@ -15,7 +15,7 @@ const Users = () => {
 
     const handleMakeAdmin = id => {
         console.log(id);
-        fetch(`https://fantasy-car-server.vercel.app/users/admin/${id}`, {
+        fetch(`https://fantasy-car-server-marahim34.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -7,7 +7,7 @@ const AllBuyers = () => {
 
 
     // useEffect(({ params }) => {
-    //     fetch(`https://fantasy-car-server.vercel.app/user/${params.role}`)
+    //     fetch(`https://fantasy-car-server-marahim34.vercel.app/user/${params.role}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             console.log(data);

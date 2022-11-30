@@ -5,6 +5,7 @@ import BlogCard from './BlogCard';
 
 const Blogs = () => {
     const blogs = useLoaderData();
+    console.log(blogs);
     return (
         <div>
             <div>

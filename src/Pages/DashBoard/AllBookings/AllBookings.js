@@ -7,7 +7,7 @@ const AllBookings = () => {
     const { data: allBookings = [] } = useQuery({
         queryKey: ['allBookings'],
         queryFn: async () => {
-            const res = await fetch(`https://fantasy-car-server.vercel.app/bookings`, {
+            const res = await fetch(`https://fantasy-car-server-marahim34.vercel.app/bookings`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("accessToken")}`
                 }

@@ -36,14 +36,14 @@ export const router = createBrowserRouter([
             {
                 path: '/car/:id',
                 element: <SingleCar></SingleCar>,
-                loader: ({ params }) => fetch(`https://fantasy-car-server.vercel.app/car/${params.id}`)
+                loader: ({ params }) => fetch(`https://fantasy-car-server-marahim34.vercel.app/car/${params.id}`)
             },
             {
                 path: '/category/:id',
                 element: <CategorywiseItems></CategorywiseItems>,
                 loader: async ({ params }) => {
                     // console.log(params.id)
-                    return fetch(`https://fantasy-car-server.vercel.app/category/${params.id}`)
+                    return fetch(`https://fantasy-car-server-marahim34.vercel.app/category/${params.id}`)
                 }
             },
             {
@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>,
-                loader: () => fetch('https://fantasy-car-server.vercel.app/blogs')
+                loader: () => fetch('https://fantasy-car-server-marahim34.vercel.app/blogs')
             },
         ]
     },
@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
                 element: <AllBuyers></AllBuyers>,
                 loader: async ({ params }) => {
                     // console.log(params.role)
-                    return fetch(`https://fantasy-car-server.vercel.app/user/${params.role}`)
+                    return fetch(`https://fantasy-car-server-marahim34.vercel.app/user/${params.role}`)
                 },
             }
         ]

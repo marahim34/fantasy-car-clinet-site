@@ -29,7 +29,7 @@ const SingleCar = () => {
             price: sellPrice
         }
         // console.log(booking);
-        fetch('https://fantasy-car-server.vercel.app/bookings', {
+        fetch('https://fantasy-car-server-marahim34.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
