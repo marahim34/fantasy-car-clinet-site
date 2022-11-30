@@ -6,8 +6,10 @@ import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import MyBooking from "../../Pages/DashBoard/MyBooking/MyBooking";
 import MyProducts from "../../Pages/DashBoard/MyProducts/MyProducts";
 import Users from "../../Pages/DashBoard/Users/Users";
+import Blogs from "../../Pages/General/Blogs/Blogs";
 import Cars from "../../Pages/General/Cars/Cars";
 import CategorywiseItems from "../../Pages/General/CategorywiseItems/CategorywiseItems";
+import ErrorPage from "../../Pages/General/ErroPage/ErrorPage";
 import Home from "../../Pages/General/Home/Home";
 import SingleCar from "../../Pages/General/SingleCar/SingleCar";
 import Login from "../../Pages/Login/Login/Login";
@@ -51,11 +53,17 @@ export const router = createBrowserRouter([
                 path: '/register',
                 element: <Registration></Registration>
             },
+            {
+                path: '/blogs',
+                element: <Blogs></Blogs>,
+                loader: () => fetch('http://localhost:5000/blogs')
+            },
         ]
     },
     {
         path: '/dashboard',
         element: <DashBoardLayout></DashBoardLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/dashboard/my-booking',
@@ -86,5 +94,9 @@ export const router = createBrowserRouter([
                 },
             }
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
     }
 ])
