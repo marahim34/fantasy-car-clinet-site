@@ -6,7 +6,7 @@ const MyProducts = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/cars?email=${user.email}`
+    const url = `https://fantasy-car-server.vercel.app/cars?email=${user.email}`
 
     const { data: myCars } = useQuery({
         queryKey: ['myCars', user?.email],

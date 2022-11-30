@@ -60,7 +60,7 @@ const AddCar = () => {
                         }
                     }
 
-                    fetch('http://localhost:5000/cars', {
+                    fetch('https://fantasy-car-server.vercel.app/cars', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -82,7 +82,7 @@ const AddCar = () => {
 
 
 
-        //         fetch('http://localhost:5000/cars', {
+        //         fetch('https://fantasy-car-server.vercel.app/cars', {
         //             method: 'POST',
         //             headers: {
         //                 'content-type': 'application/json',
