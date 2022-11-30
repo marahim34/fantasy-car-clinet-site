@@ -1,6 +1,8 @@
 import DashBoardLayout from "../../Layout/DashBoardLayout";
 import AddCar from "../../Pages/DashBoard/AddCar/AddCar";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
+import MyBooking from "../../Pages/DashBoard/MyBooking/MyBooking";
+import Users from "../../Pages/DashBoard/Users/Users";
 import Cars from "../../Pages/General/Cars/Cars";
 import CategorywiseItems from "../../Pages/General/CategorywiseItems/CategorywiseItems";
 import Home from "../../Pages/General/Home/Home";
@@ -53,8 +55,16 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes><DashBoardLayout></DashBoardLayout></PrivateRoutes>,
         children: [
             {
+                path: '/dashboard/my-booking',
+                element: <MyBooking></MyBooking>
+            },
+            {
                 path: '/dashboard/add-car',
                 element: <AddCar></AddCar>
+            },
+            {
+                path: '/dashboard/users',
+                element: <Users></Users>
             }
         ]
     }

@@ -4,38 +4,50 @@ import { FcGoogle } from 'react-icons/fc';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import toast from 'react-hot-toast';
+import useToken from '../../../Hooks/useToken';
+import { setAuthToken } from '../../../api/Auth';
 
 const Login = () => {
-    const { logIn, googleLogIn, setLoading } = useContext(AuthContext);
+    const { logIn, googleLogIn, loading } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+    const [loggedinUser, setLoggedinUser] = useState('');
     const from = location.state?.from?.pathname || '/';
+    const [token] = useToken(loggedinUser)
 
-    const handleLogIn = data => {
+    if (token) {
+        navigate(from, { replace: true });
+    }
+
+    const handleLogin = data => {
+        console.log(data);
+        setLoginError('');
         logIn(data.email, data.password)
             .then(result => {
-                console.log(result.user);
-                setLoading(true)
-                toast.success('Login Successful!');
+                const user = result.user;
+                // // console.log(user);
+                // setLoggedinUser(data.email);
+                setAuthToken(user);
 
-                // setAuthToken(result.user);
-
-                navigate(from, { replace: true })
             })
             .catch(error => {
-                console.error(error);
+                console.log(error.message)
                 setLoginError(error.message);
-                setLoading(false);
-            })
+            });
     }
 
     const handleGoogleLogin = () => {
         googleLogIn()
             .then(result => {
-                // const user = result.user;
+                const user = result.user;
+                console.log(user);
+                // setLoading(true);
+                setAuthToken(user);
                 // setAuthToken(result.user);
+                // console.log(loggedinUser);
+
                 navigate(from, { replace: true })
             })
     }
@@ -48,7 +60,7 @@ const Login = () => {
                 </div>
                 <div>
                     <h1 className='text-3xl font-semibold text-center'>Login Now!</h1>
-                    <form onSubmit={handleSubmit(handleLogIn)} className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
+                    <form onSubmit={handleSubmit(handleLogin)} className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -69,9 +81,14 @@ const Login = () => {
                                 </label>
                                 {errors?.password && <p className='text-red-500'>{errors.password.message}</p>}
                             </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
-                            </div>
+                            {
+                                loading ? <button className="btn btn-square loading"></button> :
+                                    <>                            <div className="form-control mt-6">
+                                        <button className="btn btn-primary">Login</button>
+                                    </div></>
+
+                            }
+
                         </div>
                         {loginError && <p className='text-red-600 text-sm'>{loginError}</p>}
                     </form>

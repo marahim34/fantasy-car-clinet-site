@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast'
 
 const SingleCar = () => {
     const car = useLoaderData().data;
-    const { condition, country, description, manufacturer, manufacturingDate, model, picture, sellPrice, vehicleType, yearsUsed } = car;
+    const { _id, condition, country, description, manufacturer, manufacturingDate, model, picture, sellPrice, vehicleType, yearsUsed } = car;
     const date = new Date();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -20,6 +20,7 @@ const SingleCar = () => {
         const phone = form.phone.value;
         const location = form.location.value;
         const booking = {
+            model,
             date,
             clinetName: name,
             phone,
@@ -39,14 +40,14 @@ const SingleCar = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    // form.reset();
+                    form.reset();
                     toast.success('booking confirmed');
                     navigate(from, { replace: true })
                     // refetch();
                 }
-                // else {
-                //     toast.error(data.message);
-                // }
+                else {
+                    toast.error(data.message);
+                }
             })
 
 

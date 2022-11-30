@@ -7,7 +7,7 @@ import { setAuthToken } from '../../../api/Auth';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Registration = () => {
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { loading, setLoading, createUser, updateUser } = useContext(AuthContext);
     const { handleSubmit, register, watch, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
@@ -38,7 +38,8 @@ const Registration = () => {
             })
             .catch(error => {
                 console.log(error);
-                setSignUpError(error.message)
+                setSignUpError(error.message);
+                setLoading(false);
             })
     }
 
@@ -129,9 +130,13 @@ const Registration = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary">Register</button>
-                        </div>
+                        {
+                            loading ? <button className="btn btn-square loading"></button>
+                                :
+                                <><div className="form-control mt-6">
+                                    <button className="btn btn-primary">Register</button>
+                                </div></>
+                        }
                         <>{signUpError && <p className='text-red-500 text-sm'>{signUpError}</p>}</>
                     </form>
                     <p className="text-sm font-semibold mt-2 pt-1 mb-0">

@@ -9,7 +9,7 @@ const Header = () => {
         logOut()
             .then(() => {
                 // setLoading(true);
-                localStorage.removeItem('fantasyCar-token')
+                localStorage.removeItem('accessToken')
                 setLoading(false)
             })
             .catch(error => console.error(error))
@@ -21,6 +21,7 @@ const Header = () => {
         {user?.uid ?
             <>
                 <li><Link>{user?.uid ? user?.displayName : <img src={user?.photoURL} alt="" />}</Link></li>
+                <li><Link to='/dashboard'>Dashboard</Link></li>
                 <li>   <button className='btn btn-outline btn-primary' onClick={handleLogOut}>Log Out</button></li>
             </>
             :
@@ -50,10 +51,12 @@ const Header = () => {
                     {menuItems}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <Link to='/register' className="btn">Register Now!</Link>
-            </div>
-        </div>
+            {
+                !user?.uid &&
+                <div className="navbar-end">
+                    <Link to='/register' className="btn">Register Now!</Link>
+                </div>
+            }        </div>
     );
 };
 
