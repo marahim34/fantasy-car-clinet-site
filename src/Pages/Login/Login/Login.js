@@ -77,7 +77,7 @@ const Login = () => {
                                 </label>
                                 <input  {...register('password',
                                     { required: "Password is required" }
-                                )} type="text" placeholder="password" className="input input-bordered" />
+                                )} type="password" placeholder="password" className="input input-bordered" />
                                 <label className="label">
                                     <Link className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>

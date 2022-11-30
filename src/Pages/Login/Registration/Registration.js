@@ -140,7 +140,7 @@ const Registration = () => {
                         <>{signUpError && <p className='text-red-500 text-sm'>{signUpError}</p>}</>
                     </form>
                     <p className="text-sm font-semibold mt-2 pt-1 mb-0">
-                        Already have an account? <Link to='/login' className="text-green-600 hover:text-green-700 focus:text-green-600 transition duration-200 ease-in-out">Register Now!</Link>
+                        Already have an account? <Link to='/login' className="text-green-600 hover:text-green-700 focus:text-green-600 transition duration-200 ease-in-out">Login!</Link>
                     </p>
 
                     <div

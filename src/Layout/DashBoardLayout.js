@@ -24,8 +24,14 @@ const DashBoardLayout = () => {
                             <>
                                 <li><Link to='/dashboard/users'>Users</Link></li>
                                 <li><Link to='/dashboard/bookings'>All Bookings</Link></li>
-                                <li><Link to='/dashboard/add-car'>Add A Car</Link></li>
+                                {/* <li><Link to='/dashboard/users/'>Buyers and Sellers</Link></li> */}
                                 <li><Link to='/dashboard/manage-doctors'>Manage Doctors</Link></li>
+                            </>
+                        }
+                        {
+                            <>
+                                <li><Link to='/dashboard/add-car'>Add A Car</Link></li>
+                                <li><Link to='/dashboard/myCars'>My Products</Link></li>
                             </>
                         }
                     </ul>

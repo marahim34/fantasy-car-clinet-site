@@ -1,8 +1,10 @@
 import DashBoardLayout from "../../Layout/DashBoardLayout";
 import AddCar from "../../Pages/DashBoard/AddCar/AddCar";
 import AllBookings from "../../Pages/DashBoard/AllBookings/AllBookings";
+import AllBuyers from "../../Pages/DashBoard/AllBuyers/AllBuyers";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import MyBooking from "../../Pages/DashBoard/MyBooking/MyBooking";
+import MyProducts from "../../Pages/DashBoard/MyProducts/MyProducts";
 import Users from "../../Pages/DashBoard/Users/Users";
 import Cars from "../../Pages/General/Cars/Cars";
 import CategorywiseItems from "../../Pages/General/CategorywiseItems/CategorywiseItems";
@@ -53,7 +55,7 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoutes><DashBoardLayout></DashBoardLayout></PrivateRoutes>,
+        element: <DashBoardLayout></DashBoardLayout>,
         children: [
             {
                 path: '/dashboard/my-booking',
@@ -68,8 +70,20 @@ export const router = createBrowserRouter([
                 element: <AllBookings></AllBookings>
             },
             {
+                path: '/dashboard/myCars',
+                element: <MyProducts></MyProducts>
+            },
+            {
                 path: '/dashboard/users',
                 element: <Users></Users>
+            },
+            {
+                path: 'dashboard/users/:role',
+                element: <AllBuyers></AllBuyers>,
+                loader: async ({ params }) => {
+                    // console.log(params.role)
+                    return fetch(`http://localhost:5000/user/${params.role}`)
+                },
             }
         ]
     }

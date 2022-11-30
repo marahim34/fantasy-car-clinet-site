@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import AllBuyers from '../AllBuyers/AllBuyers';
 
 const Users = () => {
     const { data: users = [], refetch } = useQuery({
@@ -33,7 +34,9 @@ const Users = () => {
 
     return (
         <div>
-            <h3 className='text-3xl'>All Users</h3>
+
+            <AllBuyers></AllBuyers>
+            {/* <h3 className='text-3xl'>All Users</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -56,9 +59,9 @@ const Users = () => {
                             </tr>)
                         }
                     </tbody>
-                </table>
-            </div>
-        </div>
+                </table> */}
+            {/* </div> */}
+        </div >
     );
 };
 
