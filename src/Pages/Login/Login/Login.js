@@ -32,7 +32,8 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setLoginUserEmail(data.email);
-                toast.success('Login Successfully')
+                toast.success('Login Successfully');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error.message)
@@ -83,13 +84,9 @@ const Login = () => {
                                 </label>
                                 {errors?.password && <p className='text-red-500'>{errors.password.message}</p>}
                             </div>
-                            {
-                                loading ? <button className="btn btn-square loading"></button> :
-                                    <>                            <div className="form-control mt-6">
-                                        <button className="btn btn-primary">Login</button>
-                                    </div></>
-
-                            }
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary">Login</button>
+                            </div>
 
                         </div>
                         {loginError && <p className='text-red-600 text-sm'>{loginError}</p>}

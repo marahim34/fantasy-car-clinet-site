@@ -10,6 +10,7 @@ const Cars = () => {
         queryFn: async () => {
             const res = await fetch(`https://fantasy-car-server-marahim34.vercel.app/cars`);
             const data = await res.json();
+            console.log(data);
             return data;
         }
     })

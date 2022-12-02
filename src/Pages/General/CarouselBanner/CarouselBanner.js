@@ -36,10 +36,10 @@ const CarouselBanner = () => {
                         <p className="mb-8 text-sm md:text-base leading-relaxed text-left text-gray-500">Visit our store and let us know your preferences. We promise to help you realize your dreams in the most reasonable ways.</p>
                         <div className="mt-0 lg:mt-6 max-w-7xl sm:flex">
                             <div className="mt-3 rounded-lg sm:mt-0">
-                                <Link> <button className="items-center block px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700">Our Store</button></Link>
+                                <Link to='/cars'> <button className="items-center block px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700">Our Store</button></Link>
                             </div>
                             <div className="mt-3 rounded-lg sm:mt-0 sm:ml-3">
-                                <Link><button className="items-center block px-10 py-3.5 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700">Login</button></Link>
+                                <Link to='/login'><button className="items-center block px-10 py-3.5 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700">Login</button></Link>
                             </div>
                         </div>
                     </div>

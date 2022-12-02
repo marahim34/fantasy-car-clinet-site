@@ -3,30 +3,28 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 
 const CarCard = ({ car }) => {
-    const { country, model, manufacturingDate, picture, yearsUser, vehicleType, sellPrice } = car.data;
+    const { _id, data } = car;
+    console.log(data.data);
 
     return (
         <div>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl mt-10">
-                <PhotoProvider>
-                    <PhotoView src={picture}>
-                        <img src={picture} className='h-44 w-full' alt="" />
-                    </PhotoView>
-                </PhotoProvider>
+            <div className="card card-compact w-96 bg-base-100 shadow-xl mt-10 text-black">
+                <img src={data.picture} className='h-44 w-full' alt="" />
                 <div className="card-body bg-yellow-500">
-                    <h2 className="card-title h-12 items-start">{ }</h2>
-                    <p className='h-16'>{ }... <Link to='/service/:id' className="link link-primary">Read More</Link> </p>
+                    <h2 className="card-title h-12 items-start">{data.model}</h2>
+                    <p className='h-16'>Car Type: {data.vehicleType ? data.vehicleType : 'No category given'} </p>
                     <div className='flex justify-between'>
                         <div>
-                            <p>Pricing: <small>€</small> <strong>{ }</strong> <small>/hr</small> </p>
+                            <p>Pricing: <small>€</small> <strong>{data.sellPrice}</strong> <small></small> </p>
+                            <p>Manufacturing Date: {data.manufacturingDate}</p>
                         </div>
-                        <div className='rating items-center'>
-                            <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                            <p>{ }</p>
+                        <div className='flex flex-col rating items-start'>
+                            <p>Location: {data.country}</p>
+                            <p>Years Used: {data.yearsUsed}</p>
                         </div>
                     </div>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-success"> <Link to={`/car/${model}`}>Details</Link> </button>
+                        <button className="btn btn-success"> <Link to={`/cars/${_id}`}>Details</Link> </button>
                     </div>
                 </div>
             </div>

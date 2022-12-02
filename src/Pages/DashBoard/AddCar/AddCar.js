@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 // import Loading from '../../Shared/Loading/Loading';
 
@@ -13,6 +13,8 @@ const AddCar = () => {
     // console.log(imageHostingKey);
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from.pathname || '/'
 
     // const image = data.image[0];
     // const formData = new FormData;
@@ -73,7 +75,7 @@ const AddCar = () => {
                             console.log(result);
                             toast.success(`${data?.model} is added successfully`);
 
-                            navigate('/dashboard/my-products')
+                            navigate(from, { replace: true })
                         })
 
                 }

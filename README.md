@@ -30,7 +30,7 @@ This project is an outcome of react.js. The following languages have been used t
         ii. login with Google
         iii. login with GitHub;
 
-    d) Authorization: Node JWT (jsonwebtoken) has been used for authorization purpose.
+    d) Authorization: Node JWT (jsonwebtokenhas been used for authorization purpose.
 
     e) Deployment of Server: In order to fulfill the requirements of this project, mongoDB database used, and the project was deployed in vercel.
 

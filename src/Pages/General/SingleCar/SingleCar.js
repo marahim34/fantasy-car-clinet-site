@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../Contexts/AuthProvider';
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast'
 
 const SingleCar = () => {
     const car = useLoaderData().data;
-    const { _id, condition, country, description, manufacturer, manufacturingDate, model, picture, sellPrice, vehicleType, yearsUsed } = car;
+    console.log(car);
+    const { condition, country, description, manufacturer, manufacturingDate, model, picture, sellPrice, vehicleType, yearsUsed } = car;
     const date = new Date();
-    const { user } = useContext(AuthContext);
+    const { user, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from.pathname || '/';
@@ -42,7 +43,8 @@ const SingleCar = () => {
                 if (data.acknowledged) {
                     form.reset();
                     toast.success('booking confirmed');
-                    navigate(from, { replace: true })
+                    setLoading(true)
+                    navigate('/dashboard/my-booking')
                     // refetch();
                 }
                 else {
@@ -126,34 +128,49 @@ const SingleCar = () => {
 
                                     </div>
                                 </div>
-                                <input type="checkbox" id="booking-modal" className="modal-toggle" />
+                                {
+                                    user?.uid ? <div>
+                                        <input type="checkbox" id="booking-modal" className="modal-toggle" />
 
-                                <div className="modal">
-                                    <div className="modal-box relative">
-                                        <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                        <h3 className="text-lg font-bold">{ }</h3>
-                                        <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
-                                            <p><span className='font-bold'>Selected Model</span>
-                                                <input type="text " disabled defaultValue={model} className='input w-full input-bordered' />
-                                            </p>
-                                            <p><span className='font-bold'>Name</span> <input name='name' type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className='input w-full input-bordered' /></p>
-                                            <p><span className='font-bold'>Email</span>
-                                                <input name='email' defaultValue={user?.email} type="text " disabled placeholder="Email Address" className='input w-full input-bordered' />
-                                            </p>
-                                            <p><span className='font-bold'>Price</span>
-                                                <input name='price' defaultValue={sellPrice} type="text " disabled placeholder="Price" className='input w-full input-bordered' />
-                                            </p>
-                                            <p> <span className='font-bold'>Contact Number</span>
-                                                <input name='phone' type="text " placeholder="Phone Number" className='input w-full input-bordered' required />
+                                        <div className="modal">
+                                            <div className="modal-box relative">
+                                                <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                                <h3 className="text-lg font-bold">{ }</h3>
+                                                <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
+                                                    <p><span className='font-bold'>Selected Model</span>
+                                                        <input type="text " disabled defaultValue={model} className='input w-full input-bordered' />
+                                                    </p>
+                                                    <p><span className='font-bold'>Name</span> <input name='name' type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className='input w-full input-bordered' /></p>
+                                                    <p><span className='font-bold'>Email</span>
+                                                        <input name='email' defaultValue={user?.email} type="text " disabled placeholder="Email Address" className='input w-full input-bordered' />
+                                                    </p>
+                                                    <p><span className='font-bold'>Price</span>
+                                                        <input name='price' defaultValue={sellPrice} type="text " disabled placeholder="Price" className='input w-full input-bordered' />
+                                                    </p>
+                                                    <p> <span className='font-bold'>Contact Number</span>
+                                                        <input name='phone' type="text " placeholder="Phone Number" className='input w-full input-bordered' required />
 
-                                            </p>
-                                            <p><span className='font-bold'>Meeting Location</span>
-                                                <input name='location' type="text " placeholder={`Preferable Meeting Location in ${country}`} className='input w-full input-bordered' required />
-                                            </p>
-                                            <input type='submit' className='btn btn-accent w-full' value="Submit" />
-                                        </form>
-                                    </div>
-                                </div>
+                                                    </p>
+                                                    <p><span className='font-bold'>Meeting Location</span>
+                                                        <input name='location' type="text " placeholder={`Preferable Meeting Location in ${country}`} className='input w-full input-bordered' required />
+                                                    </p>
+                                                    <input type='submit' className='btn btn-accent w-full' value="Submit" />
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div> :
+                                        <div>
+                                            <input type="checkbox" id="booking-modal" className="modal-toggle" />
+
+                                            <div className="modal">
+                                                <div className="modal-box relative">
+                                                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                                    <h3 className="text-lg font-bold">Please Login to Book Your Dream Car Now!</h3>
+                                                    <Link to='/login'><button className='btn btn-sm btn-primary'>Login Now</button></Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                }
                             </div>
                         </div>
                     </div>

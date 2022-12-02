@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
-import AllBuyers from '../AllBuyers/AllBuyers';
 
 const Users = () => {
     const { data: users = [], refetch } = useQuery({
@@ -9,12 +8,11 @@ const Users = () => {
         queryFn: async () => {
             const res = await fetch('https://fantasy-car-server-marahim34.vercel.app/users');
             const data = await res.json();
-            return data
+            return data;
         }
-    })
+    });
 
     const handleMakeAdmin = id => {
-        console.log(id);
         fetch(`https://fantasy-car-server-marahim34.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
@@ -28,15 +26,14 @@ const Users = () => {
                     toast.success('Make admin successfully');
                     refetch();
                 }
-            }
-            )
+            })
     }
+
 
     return (
         <div>
 
-            <AllBuyers></AllBuyers>
-            {/* <h3 className='text-3xl'>All Users</h3>
+            <h3 className='text-3xl'>All Users</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -50,17 +47,20 @@ const Users = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) => <tr key={user._id}>
-                                <th>{index + 1}</th>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
+                            users.map((user, index) =>
+                                <tr key={user._id}>
+                                    <th>{index + 1}</th>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
 
-                                <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>                                <td><button className='btn btn-xs btn-danger'>Delete</button></td>
-                            </tr>)
+                                    <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
+                                    <td><button className='btn btn-xs btn-danger'>Delete</button></td>
+                                </tr>
+                            )
                         }
                     </tbody>
-                </table> */}
-            {/* </div> */}
+                </table>
+            </div>
         </div >
     );
 };

@@ -1,22 +1,33 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const AllBookings = () => {
+    const [allbookings, setAllbookings] = useState([]);
 
-    const { data: allBookings = [] } = useQuery({
-        queryKey: ['allBookings'],
-        queryFn: async () => {
-            const res = await fetch(`https://fantasy-car-server-marahim34.vercel.app/bookings`, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem("accessToken")}`
-                }
-            });
-            const data = await res.json();
-            console.log(data);
-            return data;
-        }
-    })
+    useEffect(() => {
+        fetch('https://fantasy-car-server-marahim34.vercel.app/allbookings', {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setAllbookings(data))
+    }, [])
+
+    // const { data: bookings = [] } = useQuery({
+    //     queryKey: ['bookings'],
+    //     queryFn: async () => {
+    //         const res = await fetch(`https://fantasy-car-server-marahim34.vercel.app/bookings`, {
+    //             headers: {
+    //                 authorization: `bearer ${localStorage.getItem('accessToken')}`
+    //             }
+    //         });
+    //         const data = await res.json();
+    //         // console.log(data);
+    //         return data;
+    //     }
+    // })
 
     return (
         <div>
@@ -36,28 +47,28 @@ const AllBookings = () => {
                     </thead>
                     <tbody>
                         {
-                            // allBookings?.map((booking, index) =>
-                            //     <tr key={booking._id}>
-                            //         <th>{index + 1}</th>
-                            //         <td>{booking.clinetName}</td>
-                            //         <td>{booking.model}</td>
-                            //         <td>{booking.price}</td>
-                            //         {/* <td>{booking.date}</td> */}
-                            //         <td>
-                            //             {
-                            //                 booking.price && !booking.paid &&
-                            //                 <Link
-                            //                     to={`/dashboard/payment/${booking._id}`}>
-                            //                     <button className='btn btn-primary btn-sm'>Pay Now</button></Link>
-                            //             }
-                            //             {
-                            //                 booking.price && booking.paid && <span className='text-primary'>Paid</span>
-                            //             }
+                            allbookings?.map((booking, index) =>
+                                <tr key={booking._id}>
+                                    <th>{index + 1}</th>
+                                    <td>{booking.clinetName}</td>
+                                    <td>{booking.model}</td>
+                                    <td>{booking.price}</td>
+                                    <td>{booking.date}</td>
+                                    <td>
+                                        {
+                                            booking.price && !booking.paid &&
+                                            <Link
+                                                to={`/dashboard/payment/${booking._id}`}>
+                                                <button className='btn btn-primary btn-sm'>Pay Now</button></Link>
+                                        }
+                                        {
+                                            booking.price && booking.paid && <span className='text-primary'>Paid</span>
+                                        }
 
-                            //         </td>
-                            //         <td>Delete</td>
-                            //     </tr>
-                            // )
+                                    </td>
+                                    <td>Delete</td>
+                                </tr>
+                            )
                         }
 
                     </tbody>

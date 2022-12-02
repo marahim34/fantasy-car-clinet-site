@@ -1,30 +1,59 @@
 import { useQueries, useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const MyProducts = () => {
 
     const { user } = useContext(AuthContext);
+    const [myCars, setMyCars] = useState([]);
 
-    const url = `https://fantasy-car-server-marahim34.vercel.app/cars?email=${user.email}`
+    useEffect(() => {
+        fetch(`https://fantasy-car-server-marahim34.vercel.app/my-cars?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setMyCars(data))
+    }, [user?.email])
 
-    const { data: myCars } = useQuery({
-        queryKey: ['myCars', user?.email],
-        queryFn: async () => {
-            const res = await fetch(url, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem("accessToken")}`
-                }
-            });
-            const data = await res.json();
-            console.log(data);
-            return data
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure, you want to DELETE the buyer?');
+        if (proceed) {
+            fetch(`https://fantasy-car-server-marahim34.vercel.appbookings/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        toast.success(`The buy has been deleted successfully`)
+                        const remaining = setMyCars.filter(odr => odr._id !== id)
+                        setMyCars(remaining)
+                    }
+
+                })
         }
-    })
+    }
+
+
+    // const url = `https://fantasy-car-server-marahim34.vercel.app/cars?email=${user?.email}`
+
+    // const { data: myCars } = useQuery({
+    //     queryKey: ['myCars', user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(url,
+    //             // {
+    //             //     headers: {
+    //             //         authorization: `bearer ${localStorage.getItem("accessToken")}`
+    //             //     }
+    //             // }
+    //         );
+    //         const data = await res.json();
+    //         console.log(data);
+    //         return data
+    //     }
+    // })
 
     return (
         <div>
-            <h3 className='text-3xl'>My Orders</h3>
+            <h3 className='text-3xl'>My Products</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -54,6 +83,7 @@ const MyProducts = () => {
                                     <td>Advertise</td>
                                     <td>
                                         <label onClick={() => {
+                                            handleDelete(car._id)
                                             // setDeletingDoctor(doctor)
                                         }} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                                     </td>

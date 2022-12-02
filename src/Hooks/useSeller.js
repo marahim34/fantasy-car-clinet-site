@@ -8,7 +8,7 @@ const useSeller = email => {
             fetch(`https://fantasy-car-server-marahim34.vercel.app/users/seller/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    setIsSeller(data.isAdmin);
+                    setIsSeller(data.isSeller);
                     setIsSellerLoading(false);
                 })
         }

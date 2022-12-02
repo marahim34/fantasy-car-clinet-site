@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Header = () => {
     const { user, logOut, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogOut = () => {
         logOut()
@@ -11,6 +12,8 @@ const Header = () => {
                 // setLoading(true);
                 localStorage.removeItem('accessToken')
                 setLoading(false)
+                navigate('/login')
+
             })
             .catch(error => console.error(error))
     }

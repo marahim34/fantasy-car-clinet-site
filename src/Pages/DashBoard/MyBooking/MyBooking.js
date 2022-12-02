@@ -1,26 +1,42 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const MyBooking = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `https://fantasy-car-server-marahim34.vercel.app/bookings?email=${user.email}`
+    const [myBooking, setMyBooking] = useState([]);
 
-    const { data: bookings } = useQuery({
-        queryKey: ['bookings', user?.email],
-        queryFn: async () => {
-            const res = await fetch(url, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem("accessToken")}`
+
+    const url = `https://fantasy-car-server-marahim34.vercel.app/bookings?email=${user?.email}`
+
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setMyBooking(data)
+            })
+    }, [user?.email])
+
+    const handleDeleteDoctor = doctor => {
+        fetch(`https://fantasy-car-server-marahim34.vercel.app/bookings/${myBooking._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    // refetch();
+                    toast.success(`${myBooking.name} has been deleted successfully`)
                 }
-            });
-            const data = await res.json();
-            console.log(data);
-            return data
-        }
-    })
+
+            })
+    }
 
     return (
         <div>
@@ -40,13 +56,12 @@ const MyBooking = () => {
                     </thead>
                     <tbody>
                         {
-                            bookings?.map((booking, index) =>
+                            myBooking?.map((booking, index) =>
                                 <tr key={booking._id}>
                                     <th>{index + 1}</th>
                                     <td>{booking.clinetName}</td>
                                     <td>{booking.model}</td>
                                     <td>{booking.price}</td>
-                                    {/* <td>{booking.date}</td> */}
                                     <td>
                                         {
                                             booking.price && !booking.paid &&
@@ -59,7 +74,12 @@ const MyBooking = () => {
                                         }
 
                                     </td>
-                                    <td>Delete</td>
+                                    <td>
+
+                                        {
+                                            <label htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
+                                            // onClick={() => setDeletingDoctor(booking)} 
+                                        }</td>
                                 </tr>
                             )
                         }

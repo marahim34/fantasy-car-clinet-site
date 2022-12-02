@@ -2,7 +2,9 @@ import DashBoardLayout from "../../Layout/DashBoardLayout";
 import AddCar from "../../Pages/DashBoard/AddCar/AddCar";
 import AllBookings from "../../Pages/DashBoard/AllBookings/AllBookings";
 import AllBuyers from "../../Pages/DashBoard/AllBuyers/AllBuyers";
+import BuyerandSeller from "../../Pages/DashBoard/AllBuyers/AllBuyers";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
+import ListWiseSellerAndBuyers from "../../Pages/DashBoard/ListWiseSellerAndBuyers/ListWiseSellerAndBuyers";
 import MyBooking from "../../Pages/DashBoard/MyBooking/MyBooking";
 import MyProducts from "../../Pages/DashBoard/MyProducts/MyProducts";
 import Users from "../../Pages/DashBoard/Users/Users";
@@ -34,15 +36,14 @@ export const router = createBrowserRouter([
                 element: <Cars></Cars>
             },
             {
-                path: '/car/:id',
+                path: '/cars/:id',
                 element: <SingleCar></SingleCar>,
-                loader: ({ params }) => fetch(`https://fantasy-car-server-marahim34.vercel.app/car/${params.id}`)
+                loader: ({ params }) => fetch(`https://fantasy-car-server-marahim34.vercel.app/cars/${params.id}`)
             },
             {
                 path: '/category/:id',
                 element: <CategorywiseItems></CategorywiseItems>,
                 loader: async ({ params }) => {
-                    // console.log(params.id)
                     return fetch(`https://fantasy-car-server-marahim34.vercel.app/category/${params.id}`)
                 }
             },
@@ -87,12 +88,14 @@ export const router = createBrowserRouter([
                 element: <Users></Users>
             },
             {
-                path: 'dashboard/users/:role',
+                path: '/dashboard/users/role/seller',
                 element: <AllBuyers></AllBuyers>,
-                loader: async ({ params }) => {
-                    // console.log(params.role)
-                    return fetch(`https://fantasy-car-server-marahim34.vercel.app/user/${params.role}`)
-                },
+                loader: () => fetch('https://fantasy-car-server-marahim34.vercel.app/users/role/seller')
+            },
+            {
+                path: '/dashboard/users/role/buyer',
+                element: <ListWiseSellerAndBuyers></ListWiseSellerAndBuyers>,
+                loader: ({ params }) => fetch('https://fantasy-car-server-marahim34.vercel.app/users/role/buyer')
             }
         ]
     },

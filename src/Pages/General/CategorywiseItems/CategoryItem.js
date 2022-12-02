@@ -3,7 +3,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 
 const CategoryItem = ({ categoryItem }) => {
-    const { country, model, manufacturingDate, picture, yearsUser, vehicleType, sellPrice } = categoryItem.data;
+    const { _id, country, model, manufacturingDate, picture, yearsUser, vehicleType, sellPrice } = categoryItem.data;
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl mt-10">
@@ -25,7 +25,7 @@ const CategoryItem = ({ categoryItem }) => {
                         </div>
                     </div>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-success"> <Link to={`/car/${model}`}>Details</Link> </button>
+                        <button className="btn btn-success"> <Link to={`/cars/${_id}`}>Details</Link> </button>
                     </div>
                 </div>
             </div>
